@@ -1,0 +1,25 @@
+<h1 class="p-5 border bg-light"><%= t('contacts.contact_us') %><h1/>
+<%= form_for :contact, url: contacts_path do |f| %>
+	<% if @contact && @contact.errors.any? %>
+	<p>
+		<ul>
+		<% @contact.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		</ul>
+	</p>
+	<% end %>
+
+	<p class="p-3 border bg-light">
+		<%= f.label :email %><br />
+		<%= f.text_field :email %>
+	</p>
+
+	<p class="p-3 border bg-light">
+		<%= f.label :message %><br />
+		<%= f.text_area :message %>
+	</p>
+	<p class="p-3 border bg-light">
+		<%= f.submit 'Send message' %>
+	</p>
+<% end %>
